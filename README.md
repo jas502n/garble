@@ -1,3 +1,5 @@
+`$ garble build main.go \n Go version "go1.16" is too old; please upgrade to Go 1.17.x`
+
 # garble usage
 
 ```
