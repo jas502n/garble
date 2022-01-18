@@ -1,4 +1,92 @@
-# garble
+# garble usage
+
+```
+$ garble help build                                                                                                                                                                            
+usage: garble [garble flags] build [arguments]
+
+This command wraps "go build". Below is its help:
+
+usage: go build [-o output] [build flags] [packages]
+Run 'go help build' for details.
+```
+
+```
+$ garble help test                                                                                                                                                                              
+usage: garble [garble flags] test [arguments]
+
+This command wraps "go test". Below is its help:
+
+usage: go test [build/test flags] [packages] [build/test flags & test binary flags]
+Run 'go help test' and 'go help testflag' for details.
+```
+
+```
+$ garble help version                                                                                                                                                           
+usage: garble version
+```
+
+```
+$ garble help reverse                                                                                                                                                                                  
+usage: garble [garble flags] reverse [build flags] package [files]
+
+For example, after building an obfuscated program as follows:
+
+	garble -literals build -tags=mytag ./cmd/mycmd
+
+One can reverse a captured panic stack trace as follows:
+
+	garble -literals reverse -tags=mytag ./cmd/mycmd panic-output.txt
+```
+
+
+```$ garble -h  
+
+Garble obfuscates Go code by wrapping the Go toolchain.
+
+	garble [garble flags] command [go flags] [go arguments]
+
+For example, to build an obfuscated program:
+
+	garble build ./cmd/foo
+
+Similarly, to combine garble flags and Go build flags:
+
+	garble -literals build -tags=purego ./cmd/foo
+
+The following commands are supported:
+
+	build          replace "go build"
+	test           replace "go test"
+	version        print Garble version
+	reverse        de-obfuscate output such as stack traces
+
+To learn more about a command, run "garble help <command>".
+
+garble accepts the following flags before a command:
+
+  -debug
+    	Print debug logs to stderr
+  -debugdir string
+    	Write the obfuscated source to a directory, e.g. -debugdir=out
+  -literals
+    	Obfuscate literals such as strings
+  -seed value
+    	Provide a base64-encoded seed, e.g. -seed=o9WDTZ4CN4w
+    	For a random seed, provide -seed=random
+  -tiny
+    	Optimize for binary size, losing some ability to reverse the process
+
+For more information, see https://github.com/burrowers/garble.
+
+```
+
+# garble install
+
+default install path: `~/go/bin/garble`
+
+```
+sudo cp ~/go/bin/garble /usr/local/bin
+```
 
 	go install mvdan.cc/garble@latest
 
