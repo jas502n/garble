@@ -23,6 +23,9 @@ Run 'go help test' and 'go help testflag' for details.
 ```
 $ garble help version                                                                                                                                                           
 usage: garble version
+
+$ garble version
+v0.5.0
 ```
 
 ```
